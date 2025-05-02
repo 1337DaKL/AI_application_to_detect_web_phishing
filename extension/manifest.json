@@ -1,24 +1,40 @@
 {
-    "manifest_version": 3,
-    "name": "Phishing Checker AI",
-    "version": "1.0",
-    "description": "Kiểm tra trang web có phải là phishing không.",
-    "permissions": [
-      "tabs",
-      "scripting"
-    ],
-    "host_permissions": [
-      "<all_urls>"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
+    "manifest_version": 2,
+    "name": "AI phishing",
+    "version": "0.0.1",
+    "icons": {
         "16": "icon.png",
-        "48": "icon.png",
-        "128": "icon.png"
-      }
-    }
+        "48": "icon.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "icon.png",
+            "38": "icon.png"
+        },
+        "default_title": "AI phishing",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "page": "background.html",
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "scripts/content.js"
+            ],
+            "css": [
+                "styles/font.css",
+                "styles/main.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "clipboardWrite",
+        "storage"
+    ]
 }
