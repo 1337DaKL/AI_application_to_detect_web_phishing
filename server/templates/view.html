@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kiểm tra Phishing</title>
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 500px;
+      margin: 50px auto;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔍 Kiểm tra trang web có phải phishing</h2>
+  <input type="text" id="urlInput" placeholder="Nhập URL trang web..." />
+  <button onclick="checkPhishing()">Kiểm tra</button>
+  <div id="result"></div>
+
+  <script>
+    function checkPhishing() {
+      const url = document.getElementById("urlInput").value;
+      fetch("http://localhost:5000/check_phishing", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: url })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const resultDiv = document.getElementById("result");
+        if (data.phishing) {
+          resultDiv.innerText = "Cảnh báo: Đây có thể là trang phishing!";
+          resultDiv.style.color = "red";
+        } else {
+          resultDiv.innerText = "Trang web này có vẻ an toàn.";
+          resultDiv.style.color = "green";
+        }
+      })
+      .catch(error => {
+        document.getElementById("result").innerText = "Không thể kết nối tới server AI.";
+        console.error("Lỗi:", error);
+      });
+    }
+  </script>
+</body>
+</html>
