@@ -16,6 +16,15 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
           action: "alert_phishing"
         });
       }
+      else if (data.label === 0) {
+        chrome.tabs.sendMessage(details.tabId, {
+          action: "alert_ok"
+        });
+      } else {
+        chrome.tabs.sendMessage(details.tabId, {
+          action: "check"
+        });
+      }
     })
     .catch(err => console.error("Lỗi gửi URL:", err));
   });

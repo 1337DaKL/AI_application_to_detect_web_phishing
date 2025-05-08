@@ -17,4 +17,40 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         banner.style.fontFamily = "Arial, sans-serif";
         document.body.appendChild(banner);
     }
+    else if(message.action === "alert_ok"){
+        const banner = document.createElement("div");
+        banner.textContent = "TRANG WEB AN TOÀN";
+        banner.style.position = "fixed";
+        banner.style.top = "0";
+        banner.style.left = "0";
+        banner.style.width = "100%";
+        banner.style.zIndex = "9999";
+        banner.style.backgroundColor = "green";
+        banner.style.color = "white";
+        banner.style.fontSize = "20px";
+        banner.style.textAlign = "center";
+        banner.style.padding = "15px";
+        banner.style.fontWeight = "bold";
+        banner.style.boxShadow = "0 4px 6px rgba(0,0,0,0.2)";
+        banner.style.fontFamily = "Arial, sans-serif";
+        document.body.appendChild(banner);
+    }
+    else{
+        const banner = document.createElement("div");
+        banner.textContent = "TRANG WEB NÀY CHƯA THỂ XÁC THỰC ĐƯỢC";
+        banner.style.position = "fixed";
+        banner.style.top = "0";
+        banner.style.left = "0";
+        banner.style.width = "100%";
+        banner.style.zIndex = "9999";
+        banner.style.backgroundColor = "blue";
+        banner.style.color = "white";
+        banner.style.fontSize = "20px";
+        banner.style.textAlign = "center";
+        banner.style.padding = "15px";
+        banner.style.fontWeight = "bold";
+        banner.style.boxShadow = "0 4px 6px rgba(0,0,0,0.2)";
+        banner.style.fontFamily = "Arial, sans-serif";
+        document.body.appendChild(banner);
+    }
 });
