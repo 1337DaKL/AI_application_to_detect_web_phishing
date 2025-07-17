@@ -6,6 +6,7 @@
 
 # 📁 Cấu trúc dự án
 
+```bash
 .
 ├── XGBoost/ # Mã nguồn xử lý ML và mô hình
 │ ├── app.py # Giao tiếp với mô hình
@@ -27,8 +28,7 @@
 │
 ├── debug_output.html # Kết quả debug
 └── README.md # Hướng dẫn (file này)
-
-
+```
 ---
 
 ## 🔍 Chức năng chính
@@ -46,19 +46,29 @@
 
 ```bash
 pip install -r requirements.txt
+```
+
 Nếu chưa có requirements.txt, bạn có thể tạo:
 
+```bash
 pip freeze > requirements.txt
+```
 2. Chạy server Flask
+```bash
 cd server
 python app.py
-3. Gửi dữ liệu tới API (test nhanh)
+```
+4. Gửi dữ liệu tới API (test nhanh)
+```bash
 curl -X POST http://127.0.0.1:5000/predict \
 -H "Content-Type: application/json" \
 -d "{\"url\": \"http://example.com\"}"
+```
 🧠 Huấn luyện mô hình (nếu cần)
+```bash
 cd XGBoost
 python app.py  # hoặc script huấn luyện riêng nếu có
+```
 🌐 Cài đặt Extension
 Mở trình duyệt Chrome và vào: chrome://extensions/
 
@@ -77,5 +87,7 @@ Gửi tới server Flask
 Hiển thị kết quả trong popup
 
 🧪 Test mô hình
+```bash
 cd XGBoost
 python test_api.py
+```
